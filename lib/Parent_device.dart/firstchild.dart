@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_application_1/pages.dart/ChildidPage.dart';
+import 'package:flutter_application_1/Parent_device.dart/ChildidPage.dart';
 import 'package:flutter_application_1/setget.dart/inserChildData.dart';
 import 'package:intl/intl.dart';
 

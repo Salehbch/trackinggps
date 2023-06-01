@@ -26,7 +26,7 @@ class _PlacesPageState extends State<PlacesPage> {
 
   late PageController _pageController;
   late int prevPage = 0;
-  // ignore: prefer_typing_uninitialized_variables
+
   var children;
 
   void getChildren() async {

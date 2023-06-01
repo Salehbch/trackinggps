@@ -6,6 +6,7 @@ class HelpFeedbackPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text('Help & Feedback'),
+        backgroundColor: Colors.indigo,
       ),
       body: SingleChildScrollView(
         child: Container(

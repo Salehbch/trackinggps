@@ -2,7 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_application_1/Parent_device.dart/navigation.dart/NavigationBar.dart';
-import 'package:flutter_application_1/pages.dart/signup.dart';
+import 'package:flutter_application_1/Parent_device.dart/signup.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'forgotpage.dart';

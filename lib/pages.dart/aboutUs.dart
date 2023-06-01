@@ -6,6 +6,7 @@ class AboutUsPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text('About Us'),
+        backgroundColor: Colors.indigo,
       ),
       body: Padding(
         padding: EdgeInsets.all(16.0),

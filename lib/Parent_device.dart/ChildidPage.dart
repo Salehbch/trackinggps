@@ -16,7 +16,6 @@ class _ChildIdPageState extends State<ChildIdPage> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     print('widget id == ${widget.childId}');
     childId = widget.childId;
@@ -119,7 +118,7 @@ class _ChildIdPageState extends State<ChildIdPage> {
                       borderRadius: BorderRadius.circular(50),
                     ),
                     child: const Text(
-                      "Reset Password",
+                      "Go home",
                       style: TextStyle(
                         color: Colors.white,
                         fontWeight: FontWeight.w600,

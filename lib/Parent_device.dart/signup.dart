@@ -2,8 +2,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_application_1/pages.dart/firstchild.dart';
-import 'package:flutter_application_1/pages.dart/login.dart';
+import 'package:flutter_application_1/Parent_device.dart/firstchild.dart';
+import 'package:flutter_application_1/Parent_device.dart/login.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class SignupPage extends StatefulWidget {

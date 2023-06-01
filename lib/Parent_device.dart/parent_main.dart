@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/pages.dart/login.dart';
-import 'package:flutter_application_1/pages.dart/signup.dart';
+import 'package:flutter_application_1/Parent_device.dart/login.dart';
+import 'package:flutter_application_1/Parent_device.dart/signup.dart';
 
 class Parent_start1 extends StatefulWidget {
   const Parent_start1({Key? key}) : super(key: key);

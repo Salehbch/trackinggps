@@ -19,6 +19,7 @@ Future<String> insertDataChild(String name, String email, String password,
     'gender': gender,
     'birthday': birthday,
     'parentId': uid,
+    'position': GeoPoint(0, 0),
   });
 
   return value.id;

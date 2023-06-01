@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_application_1/Parent_device.dart/navigation.dart/children_page.dart';
 import 'package:flutter_application_1/Parent_device.dart/navigation.dart/PlaceList.dart';
 import 'package:flutter_application_1/Parent_device.dart/navigation.dart/places_page.dart';

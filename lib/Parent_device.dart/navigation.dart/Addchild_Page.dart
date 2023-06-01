@@ -241,7 +241,7 @@ class _AddChild_PageState extends State<AddChild_Page> {
                                   mainAxisSize: MainAxisSize.min,
                                   children: [
                                     Text(
-                                        'You created the new child. Its Id is:\n $id'),
+                                        'You created the new child his Id is:\n $id'),
                                     SizedBox(height: 20),
                                     ElevatedButton(
                                       onPressed: () {

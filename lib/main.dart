@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:flutter_application_1/pages.dart/permission.dart';
+import 'package:flutter_application_1/Child_device.dart/permission.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'Parent_device.dart/navigation.dart/NavigationBar.dart';

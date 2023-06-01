@@ -30,14 +30,6 @@ class _MapsPageState extends State<MapsPage> {
   LatLng initialLocation = const LatLng(23.762912, 90.427816);
   List<String> typeOptions = ['Safe', 'Dangerous'];
 
-  List<Place> places = [];
-
-  void _deletePlace(int index) {
-    setState(() {
-      places.removeAt(index);
-    });
-  }
-
   @override
   void initState() {
     super.initState();
@@ -48,7 +40,6 @@ class _MapsPageState extends State<MapsPage> {
     showDialog(
       context: context,
       builder: (BuildContext context) {
-        String name = '';
         String type = typeOptions[0];
         return AlertDialog(
           title: Text('Add Place'),
@@ -57,9 +48,7 @@ class _MapsPageState extends State<MapsPage> {
             children: [
               TextField(
                 decoration: InputDecoration(labelText: 'Name'),
-                onChanged: (value) {
-                  name = value;
-                },
+                onChanged: (value) {},
               ),
               DropdownButtonFormField<String>(
                 value: type,
@@ -82,7 +71,6 @@ class _MapsPageState extends State<MapsPage> {
             ElevatedButton(
               onPressed: () {
                 if (selectedLocation != null) {
-                  // Check if selectedLocation is not null
                   Navigator.of(context).pop();
                   final markerId = MarkerId(DateTime.now().toString());
                   final marker = Marker(
@@ -91,7 +79,7 @@ class _MapsPageState extends State<MapsPage> {
                     infoWindow:
                         InfoWindow(title: '${circleRadius.round()} meters'),
                   );
-                  final place = Place(name, type);
+
                   setState(() {
                     markers.clear();
                     circles.clear();
@@ -102,10 +90,9 @@ class _MapsPageState extends State<MapsPage> {
                         center: selectedLocation!,
                         radius: circleRadius,
                         strokeWidth: 2,
-                        fillColor: Color(0xFF006491).withOpacity(0.2),
+                        fillColor: Colors.blue.shade100,
                       ),
                     );
-                    places.add(place);
                   });
                 }
               },
@@ -127,44 +114,12 @@ class _MapsPageState extends State<MapsPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Places'),
-      ),
       body: Container(
         constraints: BoxConstraints.expand(),
         child: Column(
           children: [
-            SingleChildScrollView(
-              scrollDirection: Axis.horizontal,
-              child: Row(
-                children: places.map((place) {
-                  final color =
-                      place.type == 'Safe' ? Colors.green : Colors.red;
-                  return Container(
-                    width: 200,
-                    margin: EdgeInsets.symmetric(horizontal: 8.0),
-                    child: Column(
-                      children: [
-                        Text(
-                          place.name,
-                          style: TextStyle(color: color),
-                        ),
-                        Text(place.type),
-                        IconButton(
-                          icon: Icon(Icons.delete),
-                          onPressed: () {
-                            _deletePlace(places.indexOf(place));
-                          },
-                        ),
-                      ],
-                    ),
-                  );
-                }).toList(),
-              ),
-            ),
             SizedBox(
-              height: MediaQuery.of(context).size.height *
-                  0.5, // Set an appropriate height for the GoogleMap
+              height: MediaQuery.of(context).size.height * 0.9,
               child: GoogleMap(
                 initialCameraPosition: CameraPosition(
                   target: initialLocation,

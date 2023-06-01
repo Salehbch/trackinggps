@@ -1,12 +1,13 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/Child_device.dart/profilPage.dart';
+import 'package:flutter_application_1/Parent_device.dart/navigation.dart/profilPage.dart';
 import 'package:flutter_application_1/pages.dart/ContactUs.dart';
 
 import 'package:flutter_application_1/pages.dart/feedback.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../pages.dart/aboutUs.dart';
+import '../../pages.dart/rateapp.dart';
 
 class SettingsPage extends StatefulWidget {
   const SettingsPage({Key? key}) : super(key: key);
@@ -52,7 +53,15 @@ class _SettingsPageState extends State<SettingsPage> {
                       },
                     ),
                     _CustomListTile(
-                        title: "rate this app", icon: Icons.star, onTap: () {}),
+                        title: "rate this app",
+                        icon: Icons.star,
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => RateThisAppPage()),
+                          );
+                        }),
                     _CustomListTile(
                         title: "Contact Us",
                         icon: Icons.message_outlined,
@@ -87,11 +96,110 @@ class _SettingsPageState extends State<SettingsPage> {
                       title: "Sign out",
                       icon: Icons.exit_to_app_rounded,
                       onTap: () async {
-                        await FirebaseAuth.instance.signOut();
-                        SharedPreferences prefs =
-                            await SharedPreferences.getInstance();
-                        prefs.remove('uid');
-                        Navigator.of(context).pushReplacementNamed('/choice');
+                        showDialog(
+                          context: context,
+                          builder: (context) {
+                            return AlertDialog(
+                              content: Column(
+                                mainAxisSize: MainAxisSize.min,
+                                children: [
+                                  Text(
+                                      'Are you sure you want to disconnect:\n '),
+                                  SizedBox(height: 20),
+                                  Row(
+                                    children: [
+                                      Padding(
+                                        padding: const EdgeInsets.all(8.0),
+                                        child: Container(
+                                          width: 100,
+                                          decoration: BoxDecoration(
+                                            borderRadius:
+                                                BorderRadius.circular(60),
+                                            border: const Border(
+                                              bottom: BorderSide(
+                                                  color: Colors.black),
+                                              top: BorderSide(
+                                                  color: Colors.black),
+                                              left: BorderSide(
+                                                  color: Colors.black),
+                                              right: BorderSide(
+                                                  color: Colors.black),
+                                            ),
+                                          ),
+                                          child: MaterialButton(
+                                            minWidth: double.infinity,
+                                            height: 60,
+                                            color: Colors.red,
+                                            elevation: 0,
+                                            shape: RoundedRectangleBorder(
+                                              borderRadius:
+                                                  BorderRadius.circular(50),
+                                            ),
+                                            onPressed: () async {
+                                              await FirebaseAuth.instance
+                                                  .signOut();
+                                              SharedPreferences prefs =
+                                                  await SharedPreferences
+                                                      .getInstance();
+                                              prefs.remove('uid');
+                                              Navigator.of(context)
+                                                  .pushReplacementNamed(
+                                                      '/choice');
+                                            },
+                                            child: Text(
+                                              'Yes',
+                                              style: TextStyle(
+                                                  color: Colors.white),
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                      Padding(
+                                        padding: const EdgeInsets.all(8.0),
+                                        child: Container(
+                                          width: 100,
+                                          decoration: BoxDecoration(
+                                            borderRadius:
+                                                BorderRadius.circular(60),
+                                            border: const Border(
+                                              bottom: BorderSide(
+                                                  color: Colors.black),
+                                              top: BorderSide(
+                                                  color: Colors.black),
+                                              left: BorderSide(
+                                                  color: Colors.black),
+                                              right: BorderSide(
+                                                  color: Colors.black),
+                                            ),
+                                          ),
+                                          child: MaterialButton(
+                                            minWidth: double.infinity,
+                                            height: 60,
+                                            color: Colors.greenAccent,
+                                            elevation: 0,
+                                            shape: RoundedRectangleBorder(
+                                              borderRadius:
+                                                  BorderRadius.circular(50),
+                                            ),
+                                            onPressed: () {
+                                              Navigator.pop(context);
+                                            },
+                                            child: Text(
+                                              'No',
+                                              style: TextStyle(
+                                                  color: Colors.black),
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                  SizedBox(height: 20),
+                                ],
+                              ),
+                            );
+                          },
+                        );
                       },
                     ),
                   ],
@@ -115,6 +223,7 @@ class _CustomListTile extends StatelessWidget {
     Key? key,
     this.title,
     this.icon,
+    // ignore: unused_element
     this.trailing,
     this.onTap,
   }) : super(key: key);
